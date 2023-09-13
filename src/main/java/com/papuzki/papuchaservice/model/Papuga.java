@@ -4,7 +4,8 @@ package com.papuzki.papuchaservice.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tutorials")
+@Table(name = "papugi")
+
 public class Papuga {
 
     @Id
@@ -18,7 +19,8 @@ public class Papuga {
     private int weight;
 
     @Column(name = "color")
-    private Enum color;
+    @Enumerated(EnumType.STRING)
+    private Enum Color;
 
 
     public long getId() {
@@ -41,13 +43,12 @@ public class Papuga {
         return weight;
     }
 
-
     public Enum getColor() {
-        return color;
+        return Color;
     }
 
     public void setColor(Enum color) {
-        this.color = color;
+        Color = color;
     }
 
     @Override
@@ -55,8 +56,8 @@ public class Papuga {
         return "Papuga{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", weight='" + weight + '\'' +
-                ", color=" + color +
+                ", weight=" + weight +
+                ", Color=" + Color +
                 '}';
     }
 }
