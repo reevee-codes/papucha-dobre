@@ -1,12 +1,10 @@
 package com.papuzki.papuchaservice.model;
-
-
-import jakarta.persistence.*;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "papugi")
-
-public class Papuga {
+public class Papuga implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,10 +16,16 @@ public class Papuga {
     @Column(name = "weight")
     private int weight;
 
-    @Column(name = "color")
     @Enumerated(EnumType.STRING)
-    private Enum Color;
+    @Column(name = "color")
+    private Color Color;
 
+    public Papuga(long id, String name, int weight, com.papuzki.papuchaservice.model.Color color) {
+        this.id = id;
+        this.name = name;
+        this.weight = weight;
+        Color = color;
+    }
 
     public long getId() {
         return id;
@@ -43,11 +47,15 @@ public class Papuga {
         return weight;
     }
 
-    public Enum getColor() {
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public com.papuzki.papuchaservice.model.Color getColor() {
         return Color;
     }
 
-    public void setColor(Enum color) {
+    public void setColor(com.papuzki.papuchaservice.model.Color color) {
         Color = color;
     }
 
