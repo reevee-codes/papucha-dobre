@@ -1,6 +1,7 @@
 package com.papuzki.papuchaservice.model;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "papugi")
@@ -8,7 +9,7 @@ public class Papuga implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -20,18 +21,18 @@ public class Papuga implements Serializable {
     @Column(name = "color")
     private Color Color;
 
-    public Papuga(long id, String name, int weight, com.papuzki.papuchaservice.model.Color color) {
+    public Papuga(Long id, String name, int weight, com.papuzki.papuchaservice.model.Color color) {
         this.id = id;
         this.name = name;
         this.weight = weight;
         Color = color;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -57,6 +58,19 @@ public class Papuga implements Serializable {
 
     public void setColor(com.papuzki.papuchaservice.model.Color color) {
         Color = color;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Papuga papuga = (Papuga) o;
+        return id == papuga.id && weight == papuga.weight && Objects.equals(name, papuga.name) && Color == papuga.Color;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, weight, Color);
     }
 
     @Override
