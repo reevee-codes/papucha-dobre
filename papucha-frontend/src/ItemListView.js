@@ -13,7 +13,7 @@ const ListItem = function({data}) {
 
 export function ItemListView({items}) {
 
-    const small = true; // enable when shrinking to show add form
+    const small = false; // enable when shrinking to show add form
     return (
         <View style={styles.ItemListView}>
             {/* {items?.length

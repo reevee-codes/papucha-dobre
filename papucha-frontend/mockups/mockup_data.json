@@ -9,6 +9,11 @@
             "name": "TWOJ STARY",
             "type": "BMW",
             "color": "yellow"
+        },
+        {
+            "name": "MAGIK",
+            "type": "skoczek",
+            "color": "yellow"
         }
     ]
 }

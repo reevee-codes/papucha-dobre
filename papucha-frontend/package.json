@@ -7,7 +7,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "set-githooks": "mkdir -p ../.git/hooks && cp githooks/* ../.git/hooks/"
+    "set-githooks": "mkdir -p ../.git/hooks && cp githooks/* ../.git/hooks/",
+    "docker:build": "docker build . -t pm/papucha-frontend",
+    "docker:start": "docker run -p 8081:8081 -d pm/papucha-frontend"
   },
   "dependencies": {
     "expo": "~49.0.10",
