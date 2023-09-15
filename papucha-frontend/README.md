@@ -42,4 +42,4 @@ npx expo start
 
 ## hooks
 1. create .discord-link with webhook link
-2. run `npm run set-githooks`
+2. run `npm run set-githooks` on linux, doesnt work in powershell
