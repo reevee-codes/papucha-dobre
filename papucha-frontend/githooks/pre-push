@@ -4,7 +4,7 @@
 echo "--send push notif: start--"
 
 export GIT_DIR=${GIT_DIR-`git rev-parse --git-dir`}
-SECRETVALUE=$(cat "$GIT_DIR/../papucha-frontend/.discord-link")
+SECRETVALUE=$(cat "$GIT_DIR/../papucha-frontend/.discord_link")
 
 echo $SECRETVALUE
 
