@@ -3,45 +3,47 @@ package com.papuzki.papuchaservice.controller;
 import static javax.servlet.http.HttpServletResponse.SC_BAD_REQUEST;
 import static org.apache.http.HttpStatus.SC_OK;
 
-import java.util.Arrays;
-
 import com.papuzki.papuchaservice.model.Papuga;
-import com.papuzki.papuchaservice.service.BorbService;
+import com.papuzki.papuchaservice.service.PapugaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import java.util.List;
+
 
 @RestController
-public class BorbEndpoint {
+@RequestMapping(path = "/papuga")
+public class PapugaController {
 
     @Autowired
-    BorbService borbService;
+    PapugaService papugaService;
 
-    public BorbEndpoint(final BorbService borbService) {
-        this.borbService = borbService;
+    @GetMapping("/papugi")
+    public List<Papuga> getAllPapuga() {
+        return null;
     }
 
-    @ApiOperation("post borb")
+    @GetMapping("/papuga/{id}")
+    public Papuga getPapuga(@PathVariable("id") Long id) {
+        return null;
+    }
 
+    @ApiOperation("post papuga")
     @ApiResponses(value = {@ApiResponse(code = SC_OK, message = "ok"),
             @ApiResponse(code = SC_BAD_REQUEST, message = "An unexpected error occurred")})
 
-    @PostMapping(value = "/papuga")
+    @PostMapping(value = "/add")
     @ApiResponse(code = 200,
-            message = "",
+            message = "added papuga",
             response = Papuga.class)
-    public String postborb() throws JsonProcessingException {
-
-        return "elo";
+    public Papuga addPapuga(@RequestBody Papuga papuga) throws JsonProcessingException {
+        papugaService.saveOrUpdate(papuga);
+        return papuga;
     }
 
 }

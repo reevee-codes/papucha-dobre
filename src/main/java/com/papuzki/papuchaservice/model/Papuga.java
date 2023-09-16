@@ -28,6 +28,9 @@ public class Papuga implements Serializable {
         Color = color;
     }
 
+    public Papuga() {
+    }
+
     public Long getId() {
         return id;
     }
