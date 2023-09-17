@@ -7,3 +7,8 @@
 - spakowac do dockera
 - - logowanie
 - call przez token
+
+
+
+docker build . -t papucha-service
+docker run -p 8080:8080 -it papucha-service
