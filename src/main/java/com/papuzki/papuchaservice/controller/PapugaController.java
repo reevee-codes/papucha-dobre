@@ -17,31 +17,64 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(path = "/papuga")
+@RequestMapping(path = "/papuchaserwis")
 public class PapugaController {
 
     @Autowired
     PapugaService papugaService;
 
+    @ApiOperation("get all papugas")
+    @ApiResponses(value = {@ApiResponse(code = SC_OK, message = "ok"),
+            @ApiResponse(code = SC_BAD_REQUEST, message = "An unexpected error occurred")})
+    @ApiResponse(code = 200,
+            message = "got all papugas")
     @GetMapping("/papugi")
     public List<Papuga> getAllPapuga() {
-        return null;
+        return papugaService.getAllPapugi();
     }
 
+    @ApiOperation("get papuga by id")
+    @ApiResponses(value = {@ApiResponse(code = SC_OK, message = "ok"),
+            @ApiResponse(code = SC_BAD_REQUEST, message = "An unexpected error occurred")})
+    @ApiResponse(code = 200,
+            message = "got papuga by id")
     @GetMapping("/papuga/{id}")
     public Papuga getPapuga(@PathVariable("id") Long id) {
-        return null;
+        return papugaService.getPapugaById(id);
     }
+
+    @ApiOperation("remove papuga by id")
+    @ApiResponses(value = {@ApiResponse(code = SC_OK, message = "ok"),
+            @ApiResponse(code = SC_BAD_REQUEST, message = "An unexpected error occurred")})
+
+    @ApiResponse(code = 200,
+            message = "removed papuga by id")
+    @DeleteMapping("/papuga/{id}")
+    public void deletePapuga(@PathVariable("id") Long id) {
+        papugaService.deletePapugaById(id);
+    }
+
+    @ApiOperation("update papuga")
+    @ApiResponses(value = {@ApiResponse(code = SC_OK, message = "ok"),
+            @ApiResponse(code = SC_BAD_REQUEST, message = "An unexpected error occurred")})
+    @ApiResponse(code = 200,
+            message = "updated papuga",
+            response = Papuga.class)
+    @PutMapping("/papuga")
+    public Papuga updatePapuga(@RequestBody Papuga papuga) {
+        papugaService.saveOrUpdate(papuga);
+        return papuga;
+    }
+
 
     @ApiOperation("post papuga")
     @ApiResponses(value = {@ApiResponse(code = SC_OK, message = "ok"),
             @ApiResponse(code = SC_BAD_REQUEST, message = "An unexpected error occurred")})
-
     @PostMapping(value = "/add")
     @ApiResponse(code = 200,
             message = "added papuga",
             response = Papuga.class)
-    public Papuga addPapuga(@RequestBody Papuga papuga) throws JsonProcessingException {
+    public Papuga addPapuga(@RequestBody Papuga papuga) {
         papugaService.saveOrUpdate(papuga);
         return papuga;
     }

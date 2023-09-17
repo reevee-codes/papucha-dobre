@@ -5,5 +5,5 @@ CREATE TABLE IF NOT EXISTS papugi (
     PRIMARY KEY (id)
 );
 
-INSERT INTO papugi (id, name, color) VALUES (1, 'Sebusia', 'blue');
-INSERT INTO papugi (id, name, color) VALUES (2, 'Marcel', 'green');
+INSERT INTO papugi (id, name, color, weight) VALUES (1, 'Sebusia', 'BLUE', 2137);
+INSERT INTO papugi (id, name, color, weight) VALUES (2, 'Marcel', 'GREEN', 69);
